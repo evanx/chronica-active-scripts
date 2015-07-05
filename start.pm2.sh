@@ -4,10 +4,10 @@
 
   cat index.js | grep -q evanxsummers || exit 1
 
-  node_modules/pm2/bin/pm2 start index.js --name chronica-active -- ~/etc/chronica.yaml
+  node_modules/pm2/bin/pm2 start index.js --name chronica -- ~/etc/chronica.yaml
 
-  node_modules/pm2/bin/pm2 show chronica-active
+  node_modules/pm2/bin/pm2 show chronica
 
   sleep 2
 
-  ls -l --sort=time ~/.pm2/logs/chronica-active*
+  ls -l --sort=time ~/.pm2/logs/chronica*

@@ -1,1 +1,1 @@
-See https://github.com/evanx/chronica-active
+See https://github.com/evanx/chronica

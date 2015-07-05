@@ -1,7 +1,7 @@
 
-if ! pwd | grep -q '/chronica-active'
+if ! pwd | grep -q '/chronica'
 then
-  echo 'Please run from chronica-active app directory e.g. cd ~/chronica-active'
+  echo 'Please run from chronica app directory e.g. cd ~/chronica'
   exit 1
 fi
 

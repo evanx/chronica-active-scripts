@@ -2,17 +2,17 @@
 if ! ls -l  ~/etc/chronica.yaml
 then
   echo 'Create config file e.g.  ~/etc/chronica.yaml'
-  echo 'See https://github.com/evanx/chronica-active'
+  echo 'See https://github.com/evanx/chronica'
   exit 1
 fi
 
 if ! cat index.js | grep -q evanxsummers
 then
-  echo 'Run from chronica directory e.g. cd ~/chronica-active'
+  echo 'Run from chronica directory e.g. cd ~/chronica'
   exit 1
-elif ! pwd | grep -q '/chronica-active'
+elif ! pwd | grep -q '/chronica'
 then
-  echo 'Please cd into and run from chronica-active/ directory'
+  echo 'Please cd into and run from chronica/ directory'
   exit 1
 fi
 
