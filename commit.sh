@@ -12,6 +12,7 @@ c1push() {
 
 c1commit() {
   message="$1"
+  c1push $message
   cd util
   c1push $message
   cd ../scripts
