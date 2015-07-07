@@ -1,7 +1,7 @@
 
-if ! ls -l  ~/etc/chronica.yaml
+if ! ls -l  ~/.chronica.yaml
 then
-  echo 'Create config file e.g.  ~/etc/chronica.yaml'
+  echo 'Create config file e.g.  ~/.chronica.yaml'
   echo 'See https://github.com/evanx/chronica'
   exit 1
 fi
@@ -35,10 +35,10 @@ clear
 
 if node -v | grep ^v
 then
-  node index.js ~/etc/chronica.yaml debug | ./node_modules/bunyan/bin/bunyan -o short 
+  node index.js ~/.chronica.yaml debug | ./node_modules/bunyan/bin/bunyan -o short 
 elif nodejs -v | grep ^v
 then
-  nodejs index.js ~/etc/chronica.yaml debug | ./node_modules/bunyan/bin/bunyan -o short 
+  nodejs index.js ~/.chronica.yaml debug | ./node_modules/bunyan/bin/bunyan -o short 
 else
    echo 'Please install Node'
    exit 1

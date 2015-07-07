@@ -1,8 +1,8 @@
 
 
-if ! ls -l  ~/etc/chronica.yaml
+if ! ls -l  ~/.chronica.yaml
 then
-  echo 'Create config file e.g.  ~/etc/chronica.yaml'
+  echo 'Create config file e.g.  ~/.chronica.yaml'
   echo 'See https://github.com/evanx/chronica'
   exit 1
 fi
@@ -15,13 +15,13 @@ fi
 
   rm -f ~/.pm2/logs/chronica-*
 
-  [ -f  ~/etc/chronica.yaml ] || exit 1
+  [ -f  ~/.chronica.yaml ] || exit 1
 
   cat index.js | grep -q evanxsummers || exit 1
 
   node_modules/pm2/bin/pm2 stop chronica
 
-  node_modules/pm2/bin/pm2 start index.js --name chronica -- ~/etc/chronica.yaml
+  node_modules/pm2/bin/pm2 start index.js --name chronica -- ~/.chronica.yaml
 
   node_modules/pm2/bin/pm2 show chronica
 

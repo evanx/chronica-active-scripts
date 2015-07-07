@@ -1,2 +1,2 @@
 
-( sleep 4 ; atom ~/etc/chronica.yaml ) & atom .
+( sleep 4 ; atom ~/.chronica.yaml ) & atom .
