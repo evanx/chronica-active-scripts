@@ -26,7 +26,12 @@ if [ $# -gt 0 ]
 then
   if [ $# -eq 1 ] 
   then
-    c1commit "$1"
+    if [ $1 = 'push' ]
+    then
+      c1push 'update'
+    else
+      c1commit "$1"
+    fi
   else
     echo "ERROR: $# args"
     echo "Usage: single arg commit message"
