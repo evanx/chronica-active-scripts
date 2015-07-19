@@ -26,7 +26,7 @@ if [ $# -gt 0 ]
 then
   if [ $# -eq 1 ] 
   then
-    if [ $1 = 'push' ]
+    if [ "$1" = 'push' ]
     then
       c1push 'update'
     else
