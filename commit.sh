@@ -7,6 +7,12 @@ c0pwd() {
   fi
 }
 
+c0sync() {
+  c0pwd
+  git submodule sync 
+  cat .gitmodules | grep evanx
+}
+
 c0http() {
   c0pwd
   cd util
@@ -18,9 +24,7 @@ c0http() {
   git remote set-url origin https://github.com/evanx/chronica-scripts
   git remote -v 
   cd ..
-  c0pwd
-  git submodule sync 
-  cat .gitmodules | grep evanx
+  c0sync
 }
 
 c0evanx() {
@@ -63,14 +67,18 @@ c1commit() {
   cd ../scripts
   c1push $message
   cd ..
-  c0http
+  c0sync
   c1push $message
 }
 
 
 c0pwd
 
-if [ $# -eq 1 ] 
+if [ $# -eq 0 ] 
+then
+  files=`git diff --name-only`
+  c1commit "changed: $files"
+elif [ $# -eq 1 ] 
 then
   if [ "$1" != 'push' ]
   then
@@ -94,3 +102,5 @@ else
   exit 1
 fi
 
+c0pwd
+cat .gitmodules | grep evanx
