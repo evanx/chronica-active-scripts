@@ -10,8 +10,28 @@ c0http() {
   pwd
   git remote set-url origin https://github.com/evanx/chronica-scripts
   git remote -v 
+  cd ..
+  git submodule sync 
+  cat .gitmodules
 }
 
+c0evanx() {
+  cd util
+  pwd
+  git remote set-url origin git@github.com:evanx/redexutil.git
+  git remote -v
+  git checkout master
+  git pull
+  cd ../scripts
+  pwd
+  git remote set-url origin git@github.com:evanx/chronica-scripts.git
+  git remote -v
+  git checkout master
+  git pull
+  cd ..
+  git submodule sync 
+  cat .gitmodules
+}
 
 c1push() {
   message="$1"
@@ -32,9 +52,7 @@ c1commit() {
   cd ../scripts
   c1push $message
   cd ..
-  c0evanx
-  git submodule sync 
-  cat .gitmodules
+  c0http
   c1push $message
 }
 
