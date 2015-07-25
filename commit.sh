@@ -14,8 +14,10 @@ c0http() {
   git remote set-url origin https://github.com/evanx/chronica-scripts
   git remote -v 
   cd ..
+  echo; echo 'git submodules should be http'
   git submodule sync 
   cat .gitmodules
+  echo
 }
 
 c0evanx() {
@@ -65,20 +67,20 @@ c1commit() {
 
 c0pwd
 
-if [ $# -gt 0 ]
+if [ $# -eq 1 ] 
 then
-  if [ $# -eq 1 ] 
+  c1commit "$1"
+elif [ $# -eq 2 ] 
+then
+  if [ "$1" = 'push' ]
   then
-    if [ "$1" = 'push' ]
-    then
-      c1push 'update'
-    else
-      c1commit "$1"
-    fi
+    c1push "$2"
   else
-    echo "ERROR: $# args"
-    echo "Usage: single arg commit message"
+    echo 'invalid usage'
+    exit 1
   fi
-else
-  c1commit "update"
+else 
+  echo 'invalid usage'
+  exit 1
 fi
+
