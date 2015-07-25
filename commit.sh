@@ -1,4 +1,5 @@
 
+pwd | grep -q '/chronica' || exit 1
 
 c1push() {
   message="$1"
