@@ -16,7 +16,6 @@ c0http() {
   cd ..
   git submodule sync 
   cat .gitmodules | grep evanx
-  echo 'http done'
 }
 
 c0evanx() {
@@ -34,9 +33,7 @@ c0evanx() {
   git checkout master
   git pull
   cd ..
-  git submodule sync 
   cat .gitmodules | grep evanx
-  echo 'evanx done'
 }
 
 c1push() {

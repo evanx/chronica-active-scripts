@@ -34,6 +34,10 @@ c0http() {
   pwd
   git remote set-url origin https://github.com/evanx/chronica-scripts
   git remote -v 
+  cd ..
+  sed -i 's/git@github\.com:evanx\/chronica-scripts\.git/https:\/\/github.com\/evanx\/chronica-scripts/' .gitmodules .git/config
+  sed -i 's/git@github\.com:evanx\/redexutil\.git/https:\/\/github.com\/evanx\/redexutil/' .gitmodules .git/config
+  cat .gitmodules .git/config | grep evanx
 }
 
 if [ $# -gt 0 ]
