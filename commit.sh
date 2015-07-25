@@ -1,6 +1,18 @@
 
 pwd | grep -q '/chronica' || exit 1
 
+c0http() {
+  cd util
+  pwd
+  git remote set-url origin https://github.com/evanx/redexutil
+  git remote -v 
+  cd ../scripts
+  pwd
+  git remote set-url origin https://github.com/evanx/chronica-scripts
+  git remote -v 
+}
+
+
 c1push() {
   message="$1"
   pwd
@@ -12,6 +24,7 @@ c1push() {
 }
 
 c1commit() {
+  c0evanx
   message="$1"
   c1push $message
   cd util
@@ -19,6 +32,9 @@ c1commit() {
   cd ../scripts
   c1push $message
   cd ..
+  c0evanx
+  git submodule sync 
+  cat .gitmodules
   c1push $message
 }
 
