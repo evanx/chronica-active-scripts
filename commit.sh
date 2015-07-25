@@ -1,7 +1,10 @@
 
-pwd | grep -q '/chronica' || exit 1
+c0pwd() {
+  pwd | grep -q '/chronica' || exit 1
+}
 
 c0http() {
+  c0pwd
   cd util
   pwd
   git remote set-url origin https://github.com/evanx/redexutil
@@ -16,6 +19,7 @@ c0http() {
 }
 
 c0evanx() {
+  c0pwd
   cd util
   pwd
   git remote set-url origin git@github.com:evanx/redexutil.git
@@ -34,6 +38,7 @@ c0evanx() {
 }
 
 c1push() {
+  c0pwd
   message="$1"
   pwd
   git add --all
@@ -44,6 +49,7 @@ c1push() {
 }
 
 c1commit() {
+  c0pwd
   c0evanx
   message="$1"
   c1push $message
@@ -56,6 +62,8 @@ c1commit() {
   c1push $message
 }
 
+
+c0pwd
 
 if [ $# -gt 0 ]
 then
