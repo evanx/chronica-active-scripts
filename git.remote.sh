@@ -15,10 +15,14 @@ c0evanx() {
   pwd
   git remote set-url origin git@github.com:evanx/redexutil.git
   git remote -v 
+  git checkout master
+  git pull
   cd ../scripts
   pwd
   git remote set-url origin git@github.com:evanx/chronica-scripts.git
   git remote -v 
+  git checkout master
+  git pull
 }
 
 c0http() {
