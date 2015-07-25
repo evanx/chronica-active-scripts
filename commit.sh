@@ -1,6 +1,10 @@
 
 c0pwd() {
-  pwd | grep -q '/chronica' || exit 1
+  if ! pwd | grep -q '/chronica$' 
+  then
+    echo 'Abort, because not in chronica subdirectory'
+    exit 1
+  fi
 }
 
 c0http() {
@@ -14,6 +18,7 @@ c0http() {
   git remote set-url origin https://github.com/evanx/chronica-scripts
   git remote -v 
   cd ..
+  c0pwd
   git submodule sync 
   cat .gitmodules | grep evanx
 }
@@ -33,13 +38,13 @@ c0evanx() {
   git checkout master
   git pull
   cd ..
+  c0pwd
   cat .gitmodules | grep evanx
 }
 
 c1push() {
-  c0pwd
+  echo "c1push '$1'" `pwd`
   message="$1"
-  pwd
   git add --all
   git commit -m "$message"
   git push
@@ -48,9 +53,10 @@ c1push() {
 }
 
 c1commit() {
+  echo; echo "c1commit '$1'" 
+  message="$1"
   c0pwd
   c0evanx
-  message="$1"
   c1push $message
   cd util
   c1push $message
@@ -66,12 +72,19 @@ c0pwd
 
 if [ $# -eq 1 ] 
 then
-  c1commit "$1"
+  if [ "$1" != 'push' ]
+  then
+    c1commit "$1"
+  else
+    echo 'invalid usage'
+    exit 1
+  fi
 elif [ $# -eq 2 ] 
 then
   if [ "$1" = 'push' ]
   then
     c1push "$2"
+    cat .gitmodules | grep evanx
   else
     echo 'invalid usage'
     exit 1
