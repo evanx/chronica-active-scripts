@@ -14,10 +14,9 @@ c0http() {
   git remote set-url origin https://github.com/evanx/chronica-scripts
   git remote -v 
   cd ..
-  echo; echo 'git submodules should be http'
   git submodule sync 
-  cat .gitmodules
-  echo
+  cat .gitmodules | grep evanx
+  echo 'http done'
 }
 
 c0evanx() {
@@ -36,7 +35,8 @@ c0evanx() {
   git pull
   cd ..
   git submodule sync 
-  cat .gitmodules
+  cat .gitmodules | grep evanx
+  echo 'evanx done'
 }
 
 c1push() {
