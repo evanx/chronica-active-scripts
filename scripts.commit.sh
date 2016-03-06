@@ -5,11 +5,11 @@ message="$1"
 echo "message: $message"
 
 c0remote_evanx() {
-  git remote set-url origin https://github.com/evanx/chronica-scripts
+  git remote set-url origin git@github.com:evanx/chronica-scripts.git
 }
 
 c0remote_http() {
-  git remote set-url origin git@github.com:evanx/chronica-scripts.git
+  git remote set-url origin https://github.com/evanx/chronica-scripts
 }
 
 c0commit() {
