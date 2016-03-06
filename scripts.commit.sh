@@ -25,5 +25,6 @@ then
 else
   c0remote_evanx
   c0commit 
+  c0remote_http
 fi
 
