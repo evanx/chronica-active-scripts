@@ -17,7 +17,7 @@ then
 fi
 
 [ -f util/.git ] || git submodule init
-[ -f util/Utils.js ] || git submodule update
+[ -f util/Global.js ] || git submodule update
 
 if [ ! -f util/.git ]
 then
@@ -25,7 +25,7 @@ then
    exit 1
 fi
 
-if [ ! -f util/Utils.js ]
+if [ ! -f util/Global.js ]
 then
   echo 'Please update the util/ git submodule: git submodule update'
   exit 1
